@@ -28,7 +28,7 @@
 
   <details>
 
-- [ ] Add a links to the navbar that can be used to navigate to the all-campuses view and the all-students view
+- [x] Add a links to the navbar that can be used to navigate to the all-campuses view and the all-students view
 
 </details>
 
@@ -90,10 +90,10 @@
   <details>
 
 - Write a component to display a single campus with the following information:
-  - [ ] The campus's name, image, address and description
+  - [x] The campus's name, image, address and description
   - [ ] A list of the names of all students in that campus (or a helpful message if it doesn't have any students)
-- [ ] Display the appropriate campus's info when the url matches `/campuses/:campusId`
-- [ ] Clicking on a campus from the campuses view should navigate to show that campus
+- [x] Display the appropriate campus's info when the url matches `/campuses/:campusId`
+- [x] Clicking on a campus from the campuses view should navigate to show that campus
 
 - [ ] Clicking on the name of a student in the campus view should navigate to show that student in the student view
 
@@ -123,7 +123,7 @@
 
 <details>
 
-- [ ] Write a route to serve up a single student (based on their id), _including that student's campus_
+- [x] Write a route to serve up a single student (based on their id), _including that student's campus_
 
 </details>
 
@@ -131,7 +131,7 @@
 
 <details>
 
-- [ ] Write a route to serve up a single campus (based on its id), _including that campuses' students_
+- [x] Write a route to serve up a single campus (based on its id), _including that campuses' students_
 
 </details>
 

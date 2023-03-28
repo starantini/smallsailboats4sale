@@ -8,5 +8,13 @@ router.get("/", async (req, res, next) => {
     next(error);
   }
 });
+router.get("/:id", async (req, res, next) => {
+  try {
+    const student = await Student.findByPk(req.params.id);
+    res.json(student);
+  } catch (error) {
+    next(error);
+  }
+});
 
 module.exports = router;

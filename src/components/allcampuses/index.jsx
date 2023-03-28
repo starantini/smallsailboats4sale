@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { selectCampuses, fetchCampusesAsync } from "./campusesSlice";
 
 const AllCampuses = () => {
@@ -23,7 +24,9 @@ const AllCampuses = () => {
       {campuses.map((campus) => {
         return (
           <li key={campus.id}>
-            <h1>{campus.name}</h1>
+            <NavLink to={`/campuses/${campus.id}`}>
+              <h1>{campus.name}</h1>
+            </NavLink>
             <img src={campus.imageUrl} />
             <h2>{campus.address}</h2>
             <p>{campus.description}</p>
