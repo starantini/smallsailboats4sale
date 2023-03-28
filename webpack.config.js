@@ -1,3 +1,5 @@
+// const NodePolyfillPlugin = require("node-polyfill-webpack-plugin");
+
 module.exports = {
   mode: "development",
   entry: ["./src/index.js"],
@@ -24,4 +26,16 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    // alias: {
+    //   path: require.resolve("path-browserify"),
+    // },
+    extensions: [".js", ".jsx"],
+    // fallback: {
+    //   path: false,
+    //   url: require.resolve("url/"),
+    //   assert: require.resolve("assert/"),
+    // },
+  },
+  // plugins: [new NodePolyfillPlugin()],
 };

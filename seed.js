@@ -35,7 +35,7 @@ const students = [
     lastName: "Smith",
     email: "mattsmith@email.com",
     gpa: 3.5,
-    imgUrl:
+    imageUrl:
       "https://imgs.search.brave.com/lB9Pilgnpf8JGrDVTD6ymx754-K9d7yYs1W8UKxjS9I/rs:fit:576:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5K/OW9GR2U4TG9laWtX/VGVzSWxoVmlRSGFH/RyZwaWQ9QXBp",
   },
   {
@@ -43,7 +43,7 @@ const students = [
     lastName: "Gump",
     email: "JennyGump@email.com",
     gpa: 3.9,
-    imgUrl:
+    imageUrl:
       "https://imgs.search.brave.com/cB7OlGOdbwtzHdFOricd-Ripqty0Tc8g0KbDAszLuVs/rs:fit:185:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5Q/ZlY5VE5CcHFPdkVm/X1FWSXB2cUR3QUFB/QSZwaWQ9QXBp",
   },
   {
@@ -51,7 +51,7 @@ const students = [
     lastName: "Hack",
     email: "wardhack@email.com",
     gpa: 2.3,
-    imgUrl:
+    imageUrl:
       "https://imgs.search.brave.com/fySxxZBHmNEmHabAvCgQZwAzASkskauZVDv5yBbGjGo/rs:fit:184:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC52/MVY2RW9XNUJMWkZy/dktqS0ZseWlnQUFB/QSZwaWQ9QXBp",
   },
 ];

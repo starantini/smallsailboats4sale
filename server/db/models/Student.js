@@ -31,7 +31,7 @@ const Student = db.define("students", {
       max: 4.0,
     },
   },
-  imgUrl: {
+  imageUrl: {
     type: Sequelize.STRING,
     allowNull: false,
     defaultValue:
