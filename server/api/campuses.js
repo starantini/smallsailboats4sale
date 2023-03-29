@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const Campus = require("../db/models/Campus");
+const Student = require("../db/models/Student");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -22,7 +23,7 @@ router.get("/:id/students", async (req, res, next) => {
       where: {
         id: req.params.id,
       },
-      include: [Campus],
+      include: [Student],
     });
     res.json(studentBody);
   } catch (error) {

@@ -37,6 +37,7 @@ const students = [
     gpa: 3.5,
     imageUrl:
       "https://imgs.search.brave.com/lB9Pilgnpf8JGrDVTD6ymx754-K9d7yYs1W8UKxjS9I/rs:fit:576:225:1/g:ce/aHR0cHM6Ly90c2Uy/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5K/OW9GR2U4TG9laWtX/VGVzSWxoVmlRSGFH/RyZwaWQ9QXBp",
+    campusId: 1,
   },
   {
     firstName: "Jenny",
@@ -45,6 +46,7 @@ const students = [
     gpa: 3.9,
     imageUrl:
       "https://imgs.search.brave.com/cB7OlGOdbwtzHdFOricd-Ripqty0Tc8g0KbDAszLuVs/rs:fit:185:225:1/g:ce/aHR0cHM6Ly90c2U0/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC5Q/ZlY5VE5CcHFPdkVm/X1FWSXB2cUR3QUFB/QSZwaWQ9QXBp",
+    campusId: 3,
   },
   {
     firstName: "Ward",
@@ -53,6 +55,7 @@ const students = [
     gpa: 2.3,
     imageUrl:
       "https://imgs.search.brave.com/fySxxZBHmNEmHabAvCgQZwAzASkskauZVDv5yBbGjGo/rs:fit:184:225:1/g:ce/aHR0cHM6Ly90c2Ux/Lm1tLmJpbmcubmV0/L3RoP2lkPU9JUC52/MVY2RW9XNUJMWkZy/dktqS0ZseWlnQUFB/QSZwaWQ9QXBp",
+    campusId: 1,
   },
 ];
 

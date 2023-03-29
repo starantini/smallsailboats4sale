@@ -31,11 +31,13 @@ export const oneCampusSlice = createSlice({
     builder.addCase(fetchOneCampusAsync.fulfilled, (state, action) => {
       console.log("Single Campus action fufilled");
       // console.log(data);
+      console.log(action);
       state.data = action.payload;
     });
     builder.addCase(fetchOneCampusStudentsAsync.fulfilled, (state, action) => {
       console.log("Student body from specified campus");
-      // console.log(data);
+      console.log(action.payload);
+
       state.students = action.payload;
     });
   },
