@@ -18,7 +18,6 @@ const OneCampus = () => {
 
   useEffect(() => {
     dispatch(fetchOneCampusAsync(campusId));
-    // dispatch(fetchOneCampusStudentsAsync(campusId));
   }, [dispatch]);
 
   return (

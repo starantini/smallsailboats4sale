@@ -35,28 +35,3 @@ router.post("/", async (req, res, next) => {
 });
 
 module.exports = router;
-
-// router.get("/withStudents", async (req, res, next) => {
-//   try {
-//     const campuses = await Campus.findAll({ include: Student });
-//     res.json(campuses);
-//   } catch (err) {
-//     next(err);
-//   }
-// });
-
-// //GET /api/campuses/:id
-// router.get("/:id", async (req, res, next) => {
-//   try {
-//     const oneCampus = await Campus.findByPk(req.params.id, {
-//       include: Student,
-//     });
-//     if (!oneCampus) {
-//       throw new Error("API route not found!");
-//     } else {
-//       res.json(oneCampus);
-//     }
-//   } catch (err) {
-//     next(err);
-//   }
-// });
