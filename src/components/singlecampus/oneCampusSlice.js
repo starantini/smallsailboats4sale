@@ -1,10 +1,7 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-const initialState = {
-  data: {},
-  students: [],
-};
+const initialState = [];
 
 export const fetchOneCampusAsync = createAsyncThunk(
   "/campuses/fetchOneCampus",
@@ -14,14 +11,14 @@ export const fetchOneCampusAsync = createAsyncThunk(
     return data;
   }
 );
-export const fetchOneCampusStudentsAsync = createAsyncThunk(
-  "CampusStudentBody",
-  async (id) => {
-    const { data } = await axios.get(`/api/campuses/${id}/students`);
-    // console.log(data);
-    return data;
-  }
-);
+
+// export const fetchOneCampusStudentsAsync = createAsyncThunk(
+//   "CampusStudentBody",
+//   async (id) => {
+//     const { data } = await axios.get(`/api/campuses/${id}/students`);
+//     return data;
+//   }
+// );
 
 export const oneCampusSlice = createSlice({
   name: "campus",
@@ -29,17 +26,11 @@ export const oneCampusSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchOneCampusAsync.fulfilled, (state, action) => {
-      console.log("Single Campus action fufilled");
-      // console.log(data);
-      console.log(action);
-      state.data = action.payload;
+      return action.payload;
     });
-    builder.addCase(fetchOneCampusStudentsAsync.fulfilled, (state, action) => {
-      console.log("Student body from specified campus");
-      console.log(action.payload);
-
-      state.students = action.payload;
-    });
+    // builder.addCase(fetchOneCampusStudentsAsync.fulfilled, (state, action) => {
+    //   state.students = action.payload;
+    // });
   },
 });
 

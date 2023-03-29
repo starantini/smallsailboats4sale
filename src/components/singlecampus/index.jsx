@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, Routes, Route, useParams } from "react-router-dom";
 import {
   selectOneCampus,
   fetchOneCampusAsync,
@@ -11,20 +11,15 @@ const OneCampus = () => {
   const { campusId } = useParams();
   const dispatch = useDispatch();
   const campus = useSelector(selectOneCampus);
-  const { data, students } = campus;
-  const { name, address, id, imageUrl, description } = data;
-  // const students = campus.students;
 
-  // console.log(data);
-  // console.log(students);
+  const { name, address, id, imageUrl, description } = campus;
+
+  console.log(campus.students);
 
   useEffect(() => {
     dispatch(fetchOneCampusAsync(campusId));
     // dispatch(fetchOneCampusStudentsAsync(campusId));
-    console.log("fetch Campus Async");
   }, [dispatch]);
-
-  // console.log(campus);
 
   return (
     <ul>
@@ -35,14 +30,16 @@ const OneCampus = () => {
         <p>{description}</p>
         <h3>Students currently Attending :</h3>
         <ul>
-          {!students ? (
-            students.map((e) => (
-              <NavLink to={`/students/${e.id}`}>
-                <li>e.name</li>{" "}
-              </NavLink>
+          {campus.students && campus.students.length ? (
+            campus.students.map((e) => (
+              <li key={e.id}>
+                <NavLink to={`/students/${e.id}`}>
+                  {e.lastName},{e.firstName}
+                </NavLink>
+              </li>
             ))
           ) : (
-            <p> currently no students attending</p>
+            <p>currently no students attending</p>
           )}
         </ul>
       </li>

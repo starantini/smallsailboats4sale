@@ -7,14 +7,14 @@ export const fetchOneStudentAsync = createAsyncThunk(
   "/Studentes/fetchOneStudent",
   async (studentId) => {
     const { data } = await axios.get(`/api/students/${studentId}`);
-    // console.log(data);
+
     return data;
   }
 );
-// export const fetchOneStudentAsync = createAsyncThunk(
-//   "StudentStudentBody",
+// export const fetchOneStudentCampusAsync = createAsyncThunk(
+//   "Campusenrolledat",
 //   async (id) => {
-//     const { data } = await axios.get(`/api/Studentes/${id}/students`);
+//     const { data } = await axios.get(`/api/Studentes/${id}/campus`);
 //     // console.log(data);
 //     return data;
 //   }
@@ -26,14 +26,13 @@ export const oneStudentSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchOneStudentAsync.fulfilled, (state, action) => {
-      console.log("Single Student action fufilled");
-      // console.log(data);
+      // console.log("Single Student action fufilled");
+      // console.log(action.payload);
       return action.payload;
     });
-    // builder.addCase(fetchOneStudentStudentsAsync.fulfilled, (state, action) => {
-    //   console.log("Student body from specified Student");
-    //   // console.log(data);
-    //   state.students = action.payload;
+    // builder.addCase(fetchOneCampusAsync.fulfilled, (state, action) => {
+    //   console.log(action.payload);
+    //   state.campus = action.payload;
     // });
   },
 });

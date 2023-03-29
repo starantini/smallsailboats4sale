@@ -17,7 +17,6 @@ export const studentsSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchStudentsAsync.fulfilled, (state, action) => {
-      console.log("action fufilled");
       return action.payload;
     });
   },

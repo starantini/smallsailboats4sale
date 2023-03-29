@@ -15,21 +15,65 @@ export const fetchCampusesAsync = createAsyncThunk(
   }
 );
 
+// export const sortByStudents = createAsyncThunk("campus/sort", async () => {
+//   try {
+//     const { data } = await axios.get("/api/campuses/WithStudents");
+//     // console.log(data);
+//     return data;
+//   } catch (err) {
+//     console.error(err);
+//   }
+// });
+
+export const addCampusAsync = createAsyncThunk(
+  "campuses/addCampus",
+  async ({ id, name, address }) => {
+    const { data } = await axios.post("/api/campuses", {
+      id,
+      name,
+      address,
+    });
+    console.log(data);
+    return data;
+  }
+);
+
 export const campusesSlice = createSlice({
   name: "campuses",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchCampusesAsync.fulfilled, (state, action) => {
-      console.log("action fufilled");
       return action.payload;
     });
-    // builder.addCase(fetchCampusesAsync.rejected, (state, action) => {
-    //   state.error = action.error;
-    // });
+    builder.addCase(addCampusAsync.rejected, (state, action) => {
+      console.log(action.payload);
+      state.push(action.payload);
+    });
   },
 });
 
 export const selectCampuses = (state) => state.campuses;
 
 export default campusesSlice.reducer;
+
+// export const sortByStudents = createAsyncThunk("campus/sort", async () => {
+//   try {
+//     const { data } = await axios.get("/api/campuses/withStudents");
+//     return data;
+//   } catch (err) {
+//     console.error(err);
+//   }
+// });
+
+// export const filteredCampuses = createAsyncThunk(
+//   "campuses/filtered",
+//   async () => {
+//     try {
+//       const { data } = await axios.get(`api/campuses/withStudents`);
+//       return data;
+//     } catch (err) {
+//       console.error(err.message);
+//     }
+//   }
+// );

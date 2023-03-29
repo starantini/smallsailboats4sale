@@ -1,16 +1,22 @@
 const router = require("express").Router();
-const Student = require("../db/models/Student");
+const { Campus } = require("../db");
+const { Student } = require("../db");
 
 router.get("/", async (req, res, next) => {
   try {
-    res.json(await Student.findAll());
+    const students = await Student.findAll({
+      include: [Campus],
+    });
+    res.json(students);
   } catch (error) {
     next(error);
   }
 });
 router.get("/:id", async (req, res, next) => {
   try {
-    const student = await Student.findByPk(req.params.id);
+    const student = await Student.findByPk(req.params.id, {
+      include: [Campus],
+    });
     res.json(student);
   } catch (error) {
     next(error);
