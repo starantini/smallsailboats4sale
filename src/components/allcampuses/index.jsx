@@ -14,10 +14,10 @@ const AllCampuses = () => {
   }, [dispatch]);
 
   return (
-    <div>
-      <div>
+    <div className="princple">
+      <div className="left">
+        <h1>Campuses</h1>
         <ul>
-          <h1>Campuses</h1>
           {campuses.map((campus) => {
             return (
               <li key={campus.id}>
@@ -32,7 +32,7 @@ const AllCampuses = () => {
           })}
         </ul>
       </div>
-      <div>
+      <div className="right">
         <CreateCampus />
       </div>
     </div>

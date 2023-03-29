@@ -4,25 +4,22 @@ import { addCampusAsync } from "../allcampuses/campusesSlice";
 
 const CreateCampus = () => {
   const [name, setName] = useState("");
-  const [address, setAdress] = useState("");
+  const [address, setAddress] = useState("");
+  const [description, setDescription] = useState("");
 
   const dispatch = useDispatch();
 
-  const handelSubmit = (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch(addCampusAsync({ id, name, address }));
+    dispatch(addCampusAsync({ name, address, description }));
     setName("");
-    setAdress("");
+    setAddress("");
+    setDescription("");
   };
 
   return (
-    <form onSubmit={handelSubmit}>
-      <label htmlFor="id">Id:</label>
-      <input
-        name="name"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      ></input>
+    <form onSubmit={handleSubmit}>
+      <h1>Add a Campus</h1>
       <label htmlFor="name">Name:</label>
       <input
         name="name"
@@ -33,9 +30,15 @@ const CreateCampus = () => {
       <input
         name="address"
         value={address}
-        onChange={(e) => setAdress(e.target.value)}
+        onChange={(e) => setAddress(e.target.value)}
       ></input>
-      <button type="submit">Submit</button>
+      <label htmlFor="description">Description:</label>
+      <input
+        name="description"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      ></input>
+      <button type="submit">Add</button>
     </form>
   );
 };

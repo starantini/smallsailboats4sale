@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+// import "./Main.css";
 
 import AllCampuses from "./allcampuses/index";
 import AllStudents from "./allstudents/index";

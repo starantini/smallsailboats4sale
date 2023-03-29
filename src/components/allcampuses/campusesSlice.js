@@ -27,11 +27,11 @@ export const fetchCampusesAsync = createAsyncThunk(
 
 export const addCampusAsync = createAsyncThunk(
   "campuses/addCampus",
-  async ({ id, name, address }) => {
+  async ({ name, address, description }) => {
     const { data } = await axios.post("/api/campuses", {
-      id,
       name,
       address,
+      description,
     });
     console.log(data);
     return data;
@@ -47,7 +47,7 @@ export const campusesSlice = createSlice({
       return action.payload;
     });
     builder.addCase(addCampusAsync.rejected, (state, action) => {
-      console.log(action.payload);
+      // console.log(action.payload);
       state.push(action.payload);
     });
   },
