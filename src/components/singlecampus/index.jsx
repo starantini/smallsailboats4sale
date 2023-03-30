@@ -1,7 +1,11 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, Routes, Route, useParams } from "react-router-dom";
-import { selectOneCampus, fetchOneCampusAsync } from "./oneCampusSlice";
+import {
+  selectOneCampus,
+  fetchOneCampusAsync,
+  editCampusStudentBodyAsync,
+} from "./oneCampusSlice";
 import EditCampus from "../editCampus";
 
 const OneCampus = () => {
@@ -16,6 +20,12 @@ const OneCampus = () => {
   useEffect(() => {
     dispatch(fetchOneCampusAsync(campusId));
   }, [dispatch]);
+
+  const handleUnregister = (studentId) => {
+    const campusId = 0;
+    dispatch(editCampusStudentBodyAsync({ studentId, campusId }));
+    console.log(studentId);
+  };
 
   return (
     <div className="princple">
@@ -34,6 +44,10 @@ const OneCampus = () => {
                     <NavLink to={`/students/${e.id}`}>
                       {e.lastName},{e.firstName}
                     </NavLink>
+                    {console.log(e.campusId)}
+                    <button onClick={() => handleUnregister(e.id)}>
+                      Unregister
+                    </button>
                   </li>
                 ))
               ) : (

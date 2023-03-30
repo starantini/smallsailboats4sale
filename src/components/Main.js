@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-// import "./Main.css";
 import AllCampuses from "./allcampuses/index";
 import AllStudents from "./allstudents/index";
 import OneCampus from "./singlecampus/index";
@@ -8,6 +7,7 @@ import { Link, Route, Routes } from "react-router-dom";
 import CreateCampus from "./createCampus";
 import CreateStudent from "./createStudent";
 import EditCampus from "./editCampus";
+import EditStudent from "./editStudent";
 
 const Main = () => {
   return (
@@ -27,6 +27,7 @@ const Main = () => {
         <Route path="createCampus" element={<CreateCampus />}></Route>
         <Route path="createStudent" element={<CreateStudent />}></Route>
         <Route path="editCampus" element={<EditCampus />}></Route>
+        <Route path="editStudent" element={<EditStudent />}></Route>
         <Route path="/" element={<AllCampuses />}></Route>
       </Routes>
     </div>

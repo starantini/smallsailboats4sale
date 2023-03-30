@@ -25,6 +25,21 @@ export const editCampusAsync = createAsyncThunk(
     }
   }
 );
+export const editCampusStudentBodyAsync = createAsyncThunk(
+  "campuses/editCampusStudentBody",
+  async ({ studentId, campusId }) => {
+    console.log(studentId, campusId);
+    try {
+      const { data } = await axios.put(`/api/students/${studentId}`, {
+        campusId,
+      });
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
 
 export const oneCampusSlice = createSlice({
   name: "campus",
@@ -35,6 +50,10 @@ export const oneCampusSlice = createSlice({
       return action.payload;
     });
     builder.addCase(editCampusAsync.fulfilled, (state, action) => {
+      return action.payload;
+    });
+    builder.addCase(editCampusStudentBodyAsync.fulfilled, (state, action) => {
+      // console.log(action.payload);
       return action.payload;
     });
   },

@@ -12,12 +12,32 @@ export const fetchOneStudentAsync = createAsyncThunk(
   }
 );
 
+export const editStudentAsync = createAsyncThunk(
+  "students/editStudent",
+  async ({ studentId, firstName, lastName, email, gpa }) => {
+    try {
+      const { data } = await axios.put(`/api/students/${studentId}`, {
+        firstName,
+        lastName,
+        email,
+        gpa,
+      });
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+);
+
 export const oneStudentSlice = createSlice({
   name: "student",
   initialState,
   reducers: {},
   extraReducers: (builder) => {
     builder.addCase(fetchOneStudentAsync.fulfilled, (state, action) => {
+      return action.payload;
+    });
+    builder.addCase(editStudentAsync.fulfilled, (state, action) => {
       return action.payload;
     });
   },
