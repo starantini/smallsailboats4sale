@@ -2,7 +2,11 @@ import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import CreateStudent from "../createStudent";
-import { selectStudents, fetchStudentsAsync } from "./studentsSlice";
+import {
+  selectStudents,
+  fetchStudentsAsync,
+  deleteStudentAsync,
+} from "./studentsSlice";
 
 const AllStudents = () => {
   const dispatch = useDispatch();
@@ -12,6 +16,10 @@ const AllStudents = () => {
     dispatch(fetchStudentsAsync());
     console.log("fetch Students Async");
   }, [dispatch]);
+
+  const handleDelete = async (studentId) => {
+    dispatch(deleteStudentAsync(studentId));
+  };
 
   return (
     <div className="princple">
@@ -29,6 +37,7 @@ const AllStudents = () => {
                 <img src={student.imageUrl} />
                 <h2>GPA: {student.gpa}</h2>
                 <p>Contact: {student.email}</p>
+                <button onClick={() => handleDelete(student.id)}>X</button>
               </li>
             );
           })}

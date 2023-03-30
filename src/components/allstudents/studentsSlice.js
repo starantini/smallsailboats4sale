@@ -20,8 +20,19 @@ export const addStudentAsync = createAsyncThunk(
       email,
       gpa,
     });
-    console.log(data);
     return data;
+  }
+);
+
+export const deleteStudentAsync = createAsyncThunk(
+  "students/deleteStudent",
+  async (studentId) => {
+    try {
+      const { data } = await axios.delete(`/api/students/${studentId}`);
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
   }
 );
 
@@ -35,6 +46,12 @@ export const studentsSlice = createSlice({
     });
     builder.addCase(addStudentAsync.fulfilled, (state, action) => {
       state.push(action.payload);
+    });
+    builder.addCase(deleteStudentAsync.fulfilled, (state, action) => {
+      const newState = state.filter(
+        (student) => student.id !== action.payload.id
+      );
+      return newState;
     });
   },
 });
