@@ -1,9 +1,10 @@
 import React, { useEffect } from "react";
+import { Link, Route, Routes } from "react-router-dom";
+
 import AllCampuses from "./allcampuses/index";
 import AllStudents from "./allstudents/index";
 import OneCampus from "./singlecampus/index";
 import OneStudent from "./singlestudent/index";
-import { Link, Route, Routes } from "react-router-dom";
 import CreateCampus from "./createCampus";
 import CreateStudent from "./createStudent";
 import EditCampus from "./editCampus";

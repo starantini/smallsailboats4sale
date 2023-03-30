@@ -22,7 +22,7 @@ const OneCampus = () => {
   }, [dispatch]);
 
   const handleUnregister = (studentId) => {
-    const campusId = 0;
+    const campusId = null;
     dispatch(editCampusStudentBodyAsync({ studentId, campusId }));
     console.log(studentId);
   };
