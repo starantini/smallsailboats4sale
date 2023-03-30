@@ -36,8 +36,7 @@ router.post("/", async (req, res, next) => {
 router.delete("/:id", async (req, res, next) => {
   console.log(req.params.id);
   try {
-    const campus = await Student.findByPk(req.params.id);
-    console.log(campus);
+    const campus = await Campus.findByPk(req.params.id);
     await campus.destroy();
     res.send(campus);
   } catch (error) {

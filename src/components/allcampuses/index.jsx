@@ -11,9 +11,6 @@ import CreateCampus from "../createCampus";
 const AllCampuses = () => {
   const dispatch = useDispatch();
   const campuses = useSelector(selectCampuses);
-  // const campusId = useParams();
-  // const [deleteId, setDeleteId] = useState(null);
-  // console.log(deleteId);
 
   useEffect(() => {
     dispatch(fetchCampusesAsync());
@@ -21,8 +18,7 @@ const AllCampuses = () => {
   }, [dispatch]);
 
   const handleDelete = async (campusId) => {
-    console.log(typeof campusId);
-    console.log(dispatch(deleteCampusAsync(campusId)));
+    dispatch(deleteCampusAsync(campusId));
   };
 
   return (
@@ -39,7 +35,6 @@ const AllCampuses = () => {
                 <img src={campus.imageUrl} />
                 <h2>{campus.address}</h2>
                 <p>{campus.description}</p>
-                {console.log(campus.id)}
                 <button onClick={() => handleDelete(campus.id)}>X</button>
               </li>
             );

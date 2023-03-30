@@ -11,16 +11,6 @@ export const fetchCampusesAsync = createAsyncThunk(
   }
 );
 
-// export const sortByStudents = createAsyncThunk("campus/sort", async () => {
-//   try {
-//     const { data } = await axios.get("/api/campuses/WithStudents");
-//     // console.log(data);
-//     return data;
-//   } catch (err) {
-//     console.error(err);
-//   }
-// });
-
 export const addCampusAsync = createAsyncThunk(
   "campuses/addCampus",
   async ({ name, address, description }) => {
@@ -37,9 +27,13 @@ export const addCampusAsync = createAsyncThunk(
 export const deleteCampusAsync = createAsyncThunk(
   "campuses/deleteCampus",
   async (campusId) => {
-    const { data } = await axios.delete(`/api/campuses/${campusId}`);
-    console.log(data);
-    return data;
+    try {
+      const { data } = await axios.delete(`/api/campuses/${campusId}`);
+      console.log(data);
+      return data;
+    } catch (error) {
+      console.error(error);
+    }
   }
 );
 
@@ -55,12 +49,12 @@ export const campusesSlice = createSlice({
       state.push(action.payload);
     });
     builder.addCase(deleteCampusAsync.fulfilled, (state, action) => {
-      console.log(action.payload.id);
-      // const newState = state.filter(
-      //   (campus) => campus.id !== action.payload.id
-      // );
-      // console.log(newState);
-      return [];
+      console.log(action.payload);
+      const newState = state.filter(
+        (campus) => campus.id !== action.payload.id
+      );
+      console.log(newState);
+      return newState;
     });
   },
 });
