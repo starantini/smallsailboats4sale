@@ -31,10 +31,10 @@ const AllCampuses = () => {
               <li key={campus.id}>
                 <NavLink to={`/campuses/${campus.id}`}>
                   <h1>{campus.name}</h1>
+                  <img src={campus.imageUrl} />
                 </NavLink>
-                <img src={campus.imageUrl} />
-                <h2>{campus.address}</h2>
-                <p>{campus.description}</p>
+                <h2>Address: {campus.address}</h2>
+                <p>Description: {campus.description}</p>
                 <button onClick={() => handleDelete(campus.id)}>X</button>
               </li>
             );

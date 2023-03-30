@@ -7,6 +7,7 @@ import {
   editCampusStudentBodyAsync,
 } from "./oneCampusSlice";
 import EditCampus from "../editCampus";
+import PageNotFound from "../notFoundPage";
 
 const OneCampus = () => {
   const { campusId } = useParams();
@@ -15,8 +16,6 @@ const OneCampus = () => {
 
   const { name, address, id, imageUrl, description } = campus;
 
-  console.log(campus.students);
-
   useEffect(() => {
     dispatch(fetchOneCampusAsync(campusId));
   }, [dispatch]);
@@ -24,7 +23,6 @@ const OneCampus = () => {
   const handleUnregister = (studentId) => {
     const campusId = null;
     dispatch(editCampusStudentBodyAsync({ studentId, campusId }));
-    console.log(studentId);
   };
 
   return (

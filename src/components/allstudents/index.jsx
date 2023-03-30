@@ -30,12 +30,12 @@ const AllStudents = () => {
             return (
               <li key={student.id}>
                 <NavLink to={`/students/${student.id}`}>
-                  <h1>
+                  <h2>
                     {student.lastName},{student.firstName}
-                  </h1>
+                  </h2>
+                  <img src={student.imageUrl} />
                 </NavLink>
-                <img src={student.imageUrl} />
-                <h2>GPA: {student.gpa}</h2>
+                <h4>GPA: {student.gpa}</h4>
                 <p>Contact: {student.email}</p>
                 <button onClick={() => handleDelete(student.id)}>X</button>
               </li>

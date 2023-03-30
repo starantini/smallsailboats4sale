@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Link, Route, Routes } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import AllCampuses from "./allcampuses/index";
 import AllStudents from "./allstudents/index";
@@ -9,16 +10,24 @@ import CreateCampus from "./createCampus";
 import CreateStudent from "./createStudent";
 import EditCampus from "./editCampus";
 import EditStudent from "./editStudent";
+import PageNotFound from "./notFoundPage";
+import HomePage from "./homepage";
+import { useLocation } from "react-router-dom";
 
 const Main = () => {
+  const location = useLocation();
   return (
     <div>
       <nav>
         <Link to={"/"}>HOME</Link>
-        &nbsp;
         <Link to={"/campuses"}>CAMPUSES</Link>
-        &nbsp;
         <Link to={"/students"}>STUDENTS</Link>
+      </nav>
+      <nav className="staticBar">
+        <h5>
+          {location.hostname}
+          {location.pathname}
+        </h5>
       </nav>
       <Routes>
         <Route path="/campuses" element={<AllCampuses />}></Route>
@@ -29,7 +38,8 @@ const Main = () => {
         <Route path="createStudent" element={<CreateStudent />}></Route>
         <Route path="editCampus" element={<EditCampus />}></Route>
         <Route path="editStudent" element={<EditStudent />}></Route>
-        <Route path="/" element={<AllCampuses />}></Route>
+        <Route path="/" element={<HomePage />}></Route>
+        <Route path="*" element={<PageNotFound />}></Route>
       </Routes>
     </div>
   );

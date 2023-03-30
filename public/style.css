@@ -1,3 +1,8 @@
+* {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  border-radius: 0.5em;
+}
+
 .princple {
   display: flex;
   justify-content: space-evenly;
@@ -6,6 +11,9 @@
   display: flex;
   align-items: flex-start;
   justify-content: end;
+  background-color: rgb(15, 90, 164);
+  color: white;
+  max-height: 600px;
 }
 .left {
   display: flex;
@@ -18,6 +26,30 @@ nav {
   display: flex;
   justify-content: center;
 }
+.staticBar {
+  background-color: rgb(15, 90, 164);
+  color: white;
+  max-height: 40px;
+  display: flex;
+  justify-content: start;
+}
+h5 {
+  margin: 3px;
+  padding-left: 20px;
+}
+a {
+  margin: 1em;
+  text-decoration: none;
+  color: darkgray;
+  font-size: 1.3em;
+}
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  transform: scale(1.1);
+  color: black;
+}
 form {
   display: flex;
   flex-wrap: wrap;
@@ -29,4 +61,53 @@ form {
 input {
   width: 300px;
   height: 20px;
+  margin: 0.5em;
+}
+li {
+  list-style: none;
+  border: 1px, solid, rgb(15, 90, 164);
+}
+h1 {
+  border-bottom: 1px, solid, rgb(15, 90, 164);
+}
+button {
+  margin: 1em;
+  width: 100px;
+}
+button:hover {
+  background-color: #2ee6e6;
+  color: white;
+}
+img {
+  box-shadow: 10px 10px 5px #ccc;
+  transition: transform 0.2s;
+}
+
+img:hover {
+  transform: scale(1.1);
+}
+
+#logo {
+  max-width: 400px;
+  box-shadow: none;
+}
+#logo:hover {
+  transition: none;
+  transform: none;
+}
+.home {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+#homebanner {
+  width: 100%;
+  height: 33%;
+  box-shadow: none;
+
+  top: 50%;
+}
+#homebanner:hover {
+  transition: none;
+  transform: none;
 }
