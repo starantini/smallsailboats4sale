@@ -34,11 +34,18 @@ router.post("/", async (req, res, next) => {
 });
 
 router.delete("/:id", async (req, res, next) => {
-  console.log(req.params.id);
   try {
     const campus = await Campus.findByPk(req.params.id);
     await campus.destroy();
     res.send(campus);
+  } catch (error) {
+    next(error);
+  }
+});
+router.put("/:id", async (req, res, next) => {
+  try {
+    const campus = await Campus.findByPk(req.params.id);
+    res.send(await campus.update(req.body));
   } catch (error) {
     next(error);
   }

@@ -1,11 +1,8 @@
 import React, { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, Routes, Route, useParams } from "react-router-dom";
-import {
-  selectOneCampus,
-  fetchOneCampusAsync,
-  fetchOneCampusStudentsAsync,
-} from "./oneCampusSlice";
+import { selectOneCampus, fetchOneCampusAsync } from "./oneCampusSlice";
+import EditCampus from "../editCampus";
 
 const OneCampus = () => {
   const { campusId } = useParams();
@@ -21,28 +18,35 @@ const OneCampus = () => {
   }, [dispatch]);
 
   return (
-    <ul>
-      <li key={id}>
-        <h1>{name}</h1>
-        <img src={imageUrl} />
-        <h2>{address}</h2>
-        <p>{description}</p>
-        <h3>Students currently Attending :</h3>
+    <div className="princple">
+      <div className="left">
         <ul>
-          {campus.students && campus.students.length ? (
-            campus.students.map((e) => (
-              <li key={e.id}>
-                <NavLink to={`/students/${e.id}`}>
-                  {e.lastName},{e.firstName}
-                </NavLink>
-              </li>
-            ))
-          ) : (
-            <p>currently no students attending</p>
-          )}
+          <li key={id}>
+            <h1>{name}</h1>
+            <img src={imageUrl} />
+            <h2>{address}</h2>
+            <p>{description}</p>
+            <h3>Students currently Attending :</h3>
+            <ul>
+              {campus.students && campus.students.length ? (
+                campus.students.map((e) => (
+                  <li key={e.id}>
+                    <NavLink to={`/students/${e.id}`}>
+                      {e.lastName},{e.firstName}
+                    </NavLink>
+                  </li>
+                ))
+              ) : (
+                <p>currently no students attending</p>
+              )}
+            </ul>
+          </li>
         </ul>
-      </li>
-    </ul>
+      </div>
+      <div className="right">
+        <EditCampus />
+      </div>
+    </div>
   );
 };
 
