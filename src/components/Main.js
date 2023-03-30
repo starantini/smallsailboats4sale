@@ -7,6 +7,7 @@ import OneCampus from "./singlecampus/index";
 import OneStudent from "./singlestudent/index";
 import { Link, Route, Routes } from "react-router-dom";
 import CreateCampus from "./createCampus";
+import CreateStudent from "./createStudent";
 
 const Main = () => {
   return (
@@ -24,6 +25,7 @@ const Main = () => {
         <Route path="/campuses/:campusId/*" element={<OneCampus />}></Route>
         <Route path="/students/:studentId/*" element={<OneStudent />}></Route>
         <Route path="createCampus" element={<CreateCampus />}></Route>
+        <Route path="createStudent" element={<CreateStudent />}></Route>
         <Route path="/" element={<AllCampuses />}></Route>
       </Routes>
     </div>

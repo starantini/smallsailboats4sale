@@ -11,6 +11,20 @@ export const fetchStudentsAsync = createAsyncThunk(
   }
 );
 
+export const addStudentAsync = createAsyncThunk(
+  "campuses/addCampus",
+  async ({ firstName, lastName, email, gpa }) => {
+    const { data } = await axios.post("/api/students", {
+      firstName,
+      lastName,
+      email,
+      gpa,
+    });
+    console.log(data);
+    return data;
+  }
+);
+
 export const studentsSlice = createSlice({
   name: "students",
   initialState,
@@ -18,6 +32,9 @@ export const studentsSlice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchStudentsAsync.fulfilled, (state, action) => {
       return action.payload;
+    });
+    builder.addCase(addStudentAsync.fulfilled, (state, action) => {
+      state.push(action.payload);
     });
   },
 });
