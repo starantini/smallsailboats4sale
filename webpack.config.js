@@ -30,7 +30,7 @@ module.exports = {
     // alias: {
     //   path: require.resolve("path-browserify"),
     // },
-    extensions: [".js", ".jsx", ".css"],
+    extensions: [".js", ".jsx"],
     // fallback: {
     //   path: false,
     //   url: require.resolve("url/"),

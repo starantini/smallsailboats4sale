@@ -12,7 +12,6 @@ router.get("/", async (req, res, next) => {
 });
 
 router.get("/:id", async (req, res, next) => {
-  console.log(Student, "is this firing");
   try {
     const campus = await Campus.findOne({
       where: {
@@ -29,6 +28,18 @@ router.get("/:id", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     res.status(201).send(await Campus.create(req.body));
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete("/:id", async (req, res, next) => {
+  console.log(req.params.id);
+  try {
+    const campus = await Student.findByPk(req.params.id);
+    console.log(campus);
+    await campus.destroy();
+    res.send(campus);
   } catch (error) {
     next(error);
   }

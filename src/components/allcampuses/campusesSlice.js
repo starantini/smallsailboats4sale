@@ -1,8 +1,4 @@
-import {
-  createSlice,
-  createAsyncThunk,
-  isRejectedWithValue,
-} from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 const initialState = [];
@@ -38,6 +34,15 @@ export const addCampusAsync = createAsyncThunk(
   }
 );
 
+export const deleteCampusAsync = createAsyncThunk(
+  "campuses/deleteCampus",
+  async (campusId) => {
+    const { data } = await axios.delete(`/api/campuses/${campusId}`);
+    console.log(data);
+    return data;
+  }
+);
+
 export const campusesSlice = createSlice({
   name: "campuses",
   initialState,
@@ -46,9 +51,16 @@ export const campusesSlice = createSlice({
     builder.addCase(fetchCampusesAsync.fulfilled, (state, action) => {
       return action.payload;
     });
-    builder.addCase(addCampusAsync.rejected, (state, action) => {
-      // console.log(action.payload);
+    builder.addCase(addCampusAsync.fulfilled, (state, action) => {
       state.push(action.payload);
+    });
+    builder.addCase(deleteCampusAsync.fulfilled, (state, action) => {
+      console.log(action.payload.id);
+      // const newState = state.filter(
+      //   (campus) => campus.id !== action.payload.id
+      // );
+      // console.log(newState);
+      return [];
     });
   },
 });
