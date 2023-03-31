@@ -11,6 +11,7 @@ import {
 const AllStudents = () => {
   const dispatch = useDispatch();
   const students = useSelector(selectStudents);
+  const [sortType, setSortType] = useState("");
 
   useEffect(() => {
     dispatch(fetchStudentsAsync());
@@ -26,6 +27,10 @@ const AllStudents = () => {
       <div className="left">
         <ul>
           <h1>Students</h1>
+          <select onChange={(e) => setSortType(e.targetvalue)}>
+            <option value={lastname}>lastname</option>
+            <option value={gpa}>Gpa</option>
+          </select>
           {students.map((student) => {
             return (
               <li key={student.id}>

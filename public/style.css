@@ -2,7 +2,7 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   border-radius: 0.5em;
 }
-
+/* General */
 .princple {
   display: flex;
   justify-content: space-evenly;
@@ -21,10 +21,15 @@
   flex-direction: column;
   text-align: center;
 }
+.hometext {
+  padding: 1em;
+}
+
+/* Navigational features */
 nav {
   margin: 10px;
   display: flex;
-  justify-content: center;
+  justify-content: start;
 }
 .staticBar {
   background-color: rgb(15, 90, 164);
@@ -50,6 +55,8 @@ a:hover {
   transform: scale(1.1);
   color: black;
 }
+
+/* input field styling */
 form {
   display: flex;
   flex-wrap: wrap;
@@ -63,6 +70,12 @@ input {
   height: 20px;
   margin: 0.5em;
 }
+label {
+  display: flex;
+  align-items: center;
+}
+
+/* list styling */
 li {
   list-style: none;
   border: 1px, solid, rgb(15, 90, 164);
@@ -70,6 +83,8 @@ li {
 h1 {
   border-bottom: 1px, solid, rgb(15, 90, 164);
 }
+
+/* button styling */
 button {
   margin: 1em;
   width: 100px;
@@ -78,6 +93,8 @@ button:hover {
   background-color: #2ee6e6;
   color: white;
 }
+
+/* image styling */
 img {
   box-shadow: 10px 10px 5px #ccc;
   transition: transform 0.2s;

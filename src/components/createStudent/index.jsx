@@ -6,7 +6,8 @@ const CreateStudent = () => {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
-  const [gpa, setGpa] = useState(0);
+  const [gpa, setGpa] = useState(Number);
+  const [toggle, setToggle] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -16,7 +17,25 @@ const CreateStudent = () => {
     setFirstName("");
     setLastName("");
     setEmail("");
-    setGpa(0);
+    setGpa(Number);
+  };
+  const requiredField = () => {
+    if (firstName.length === 0) {
+      return <p style={{ color: "red" }}>*firstname field is required</p>;
+    }
+    if (lastName.length === 0) {
+      return <p style={{ color: "red" }}>*lastname field is required</p>;
+    }
+    if (email.length === 0) {
+      return <p style={{ color: "red" }}>*email field is required</p>;
+    }
+    if (gpa) {
+      return (
+        <p style={{ color: "red" }}>
+          *gpa field requires values between 0.0-4.0
+        </p>
+      );
+    }
   };
 
   return (
@@ -46,7 +65,10 @@ const CreateStudent = () => {
         value={gpa}
         onChange={(e) => setGpa(e.target.value)}
       ></input>
-      <button type="submit">Add</button>
+      {toggle ? requiredField() : null}
+      <button onClick={() => setToggle(true)} type="submit">
+        Add
+      </button>
     </form>
   );
 };

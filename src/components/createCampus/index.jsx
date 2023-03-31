@@ -6,6 +6,7 @@ const CreateCampus = () => {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [description, setDescription] = useState("");
+  const [toggle, setToggle] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -15,6 +16,17 @@ const CreateCampus = () => {
     setName("");
     setAddress("");
     setDescription("");
+  };
+  const requiredField = () => {
+    if (name.length === 0) {
+      return <p style={{ color: "red" }}>*name field is required</p>;
+    }
+    if (address.length === 0) {
+      return <p style={{ color: "red" }}>*address field is required</p>;
+    }
+    if (description.length === 0) {
+      return <p style={{ color: "red" }}>*description field is required</p>;
+    }
   };
 
   return (
@@ -26,6 +38,7 @@ const CreateCampus = () => {
         value={name}
         onChange={(e) => setName(e.target.value)}
       ></input>
+
       <label htmlFor="address">Address:</label>
       <input
         name="address"
@@ -38,7 +51,10 @@ const CreateCampus = () => {
         value={description}
         onChange={(e) => setDescription(e.target.value)}
       ></input>
-      <button type="submit">Add</button>
+      {toggle ? requiredField() : null}
+      <button onClick={() => setToggle(true)} type="submit">
+        Add
+      </button>
     </form>
   );
 };
