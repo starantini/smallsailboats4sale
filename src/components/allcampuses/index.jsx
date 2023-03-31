@@ -12,6 +12,8 @@ const AllCampuses = () => {
   const dispatch = useDispatch();
   const campuses = useSelector(selectCampuses);
 
+  const [toggle, setToggle] = useState(false);
+
   useEffect(() => {
     dispatch(fetchCampusesAsync());
     console.log("fetch Campuses Async");
@@ -20,13 +22,20 @@ const AllCampuses = () => {
   const handleDelete = async (campusId) => {
     dispatch(deleteCampusAsync(campusId));
   };
+  const largestStudentBody = [...campuses].sort(
+    (a, b) => b.students.length - a.students.length
+  );
 
   return (
     <div className="princple">
       <div className="left">
         <h1>Campuses</h1>
         <ul>
-          {campuses.map((campus) => {
+          <select onChange={(e) => setToggle(e.target.value)}>
+            <option value>sort</option>
+            <option value={true}>MostStudents</option>
+          </select>
+          {(toggle ? largestStudentBody : campuses).map((campus) => {
             return (
               <li key={campus.id}>
                 <NavLink to={`/campuses/${campus.id}`}>

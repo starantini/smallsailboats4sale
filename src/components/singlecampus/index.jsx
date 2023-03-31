@@ -7,7 +7,6 @@ import {
   editCampusStudentBodyAsync,
 } from "./oneCampusSlice";
 import EditCampus from "../editCampus";
-import PageNotFound from "../notFoundPage";
 
 const OneCampus = () => {
   const { campusId } = useParams();

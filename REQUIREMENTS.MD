@@ -341,9 +341,9 @@
 
 <details>
 
-- [ ] Create option for students to be ordered based on lastName on all-students view
-- [ ] Create option for students to be ordered based on GPA on all-students view
-- [ ] Create option for campuses to be ordered based on number of enrolled students on all-campuses view
+- [x] Create option for students to be ordered based on lastName on all-students view
+- [x] Create option for students to be ordered based on GPA on all-students view
+- [x] Create option for campuses to be ordered based on number of enrolled students on all-campuses view
 
 </details>
 

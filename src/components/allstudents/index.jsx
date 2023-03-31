@@ -14,16 +14,11 @@ const AllStudents = () => {
   const [sortType, setSortType] = useState("");
 
   const students2 = [...students].sort((a, b) => a.id - b.id);
-
   const students3 = [...students].sort((a, b) =>
     a.lastName.localeCompare(b.lastName)
   );
-  console.log(students3);
-
   const students4 = [...students].sort((a, b) => a.gpa - b.gpa);
-  console.log(students4);
 
-  console.log(sortType);
   useEffect(() => {
     dispatch(fetchStudentsAsync());
     console.log("fetch Students Async");
