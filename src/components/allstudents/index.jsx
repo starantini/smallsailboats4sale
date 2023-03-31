@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink } from "react-router-dom";
 import CreateStudent from "../createStudent";
@@ -13,6 +13,17 @@ const AllStudents = () => {
   const students = useSelector(selectStudents);
   const [sortType, setSortType] = useState("");
 
+  const students2 = [...students].sort((a, b) => a.id - b.id);
+
+  const students3 = [...students].sort((a, b) =>
+    a.lastName.localeCompare(b.lastName)
+  );
+  console.log(students3);
+
+  const students4 = [...students].sort((a, b) => a.gpa - b.gpa);
+  console.log(students4);
+
+  console.log(sortType);
   useEffect(() => {
     dispatch(fetchStudentsAsync());
     console.log("fetch Students Async");
@@ -27,11 +38,17 @@ const AllStudents = () => {
       <div className="left">
         <ul>
           <h1>Students</h1>
-          <select onChange={(e) => setSortType(e.targetvalue)}>
-            <option value={lastname}>lastname</option>
-            <option value={gpa}>Gpa</option>
+          <select onChange={(e) => setSortType(e.target.value)}>
+            <option value>sort</option>
+            <option value={"lastName"}>lastname</option>
+            <option value={"gpa"}>Gpa</option>
           </select>
-          {students.map((student) => {
+          {(sortType === "gpa"
+            ? students4
+            : sortType === "lastName"
+            ? students3
+            : students2
+          ).map((student) => {
             return (
               <li key={student.id}>
                 <NavLink to={`/students/${student.id}`}>
