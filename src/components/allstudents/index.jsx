@@ -13,11 +13,15 @@ const AllStudents = () => {
   const students = useSelector(selectStudents);
   const [sortType, setSortType] = useState("");
 
-  const students2 = [...students].sort((a, b) => a.id - b.id);
-  const students3 = [...students].sort((a, b) =>
+  const studentsSortedId = [...students].sort((a, b) => a.id - b.id);
+  const studentsSortedLastname = [...students].sort((a, b) =>
     a.lastName.localeCompare(b.lastName)
   );
-  const students4 = [...students].sort((a, b) => a.gpa - b.gpa);
+  const studentsSortedGpa = [...students].sort((a, b) => a.gpa - b.gpa);
+
+  const unregisteredStudents = [...students].filter((e) =>
+    e.campusId === null ? e : null
+  );
 
   useEffect(() => {
     dispatch(fetchStudentsAsync());
@@ -37,12 +41,15 @@ const AllStudents = () => {
             <option value>sort</option>
             <option value={"lastName"}>lastname</option>
             <option value={"gpa"}>Gpa</option>
+            <option value={"unregistered"}>unregistered</option>
           </select>
           {(sortType === "gpa"
-            ? students4
+            ? studentsSortedGpa
             : sortType === "lastName"
-            ? students3
-            : students2
+            ? studentsSortedLastname
+            : sortType === "unregistered"
+            ? unregisteredStudents
+            : studentsSortedId
           ).map((student) => {
             return (
               <li key={student.id}>
