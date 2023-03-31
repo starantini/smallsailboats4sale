@@ -12,7 +12,7 @@ const AllCampuses = () => {
   const dispatch = useDispatch();
   const campuses = useSelector(selectCampuses);
 
-  const [toggle, setToggle] = useState(false);
+  const [sortType, setSortType] = useState("");
 
   useEffect(() => {
     dispatch(fetchCampusesAsync());
@@ -26,16 +26,28 @@ const AllCampuses = () => {
     (a, b) => b.students.length - a.students.length
   );
 
+  const emptyCampus = [...campuses].filter((e) =>
+    e.students.length === 0 ? e : null
+  );
+
+  console.log(emptyCampus);
+
   return (
     <div className="princple">
       <div className="left">
         <h1>Campuses</h1>
         <ul>
-          <select onChange={(e) => setToggle(e.target.value)}>
+          <select onChange={(e) => setSortType(e.target.value)}>
             <option value>sort</option>
-            <option value={true}>MostStudents</option>
+            <option value={"moststudents"}>MostStudents</option>
+            <option value={"nostudents"}>0 Students</option>
           </select>
-          {(toggle ? largestStudentBody : campuses).map((campus) => {
+          {(sortType === "moststudents"
+            ? largestStudentBody
+            : sortType === "nostudents"
+            ? emptyCampus
+            : campuses
+          ).map((campus) => {
             return (
               <li key={campus.id}>
                 <NavLink to={`/campuses/${campus.id}`}>
