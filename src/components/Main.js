@@ -1,6 +1,5 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Link, Route, Routes } from "react-router-dom";
-import { useParams } from "react-router-dom";
 
 import AllCampuses from "./allcampuses/index";
 import AllStudents from "./allstudents/index";

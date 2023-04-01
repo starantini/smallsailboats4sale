@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
   selectCampuses,
   fetchCampusesAsync,
@@ -12,25 +12,31 @@ const AllCampuses = () => {
   const dispatch = useDispatch();
   const campuses = useSelector(selectCampuses);
 
+  // console.log(campuses.map((e) => e.students));
+
   const [sortType, setSortType] = useState("");
 
   useEffect(() => {
     dispatch(fetchCampusesAsync());
-    console.log("fetch Campuses Async");
   }, [dispatch]);
 
   const handleDelete = async (campusId) => {
     dispatch(deleteCampusAsync(campusId));
   };
-  const largestStudentBody = [...campuses].sort(
-    (a, b) => b.students.length - a.students.length
-  );
 
-  const emptyCampus = [...campuses].filter((e) =>
-    e.students.length === 0 ? e : null
-  );
+  const largestStudentBody = () => {
+    const mostStudents = [...campuses].sort((a, b) =>
+      a.students && b.students ? b.students.length - a.students.length : null
+    );
+    return mostStudents;
+  };
 
-  console.log(emptyCampus);
+  const emptyCampus = () => {
+    const emptyCampus = [...campuses].filter((e) =>
+      e.students && e.students.length === 0 ? e : console.log("not working")
+    );
+    return emptyCampus;
+  };
 
   return (
     <div className="princple">
@@ -38,14 +44,14 @@ const AllCampuses = () => {
         <ul>
           <h1>Campuses</h1>
           <select onChange={(e) => setSortType(e.target.value)}>
-            <option value>sort</option>
+            <option value={""}>sort</option>
             <option value={"moststudents"}>MostStudents</option>
             <option value={"nostudents"}>0 Students</option>
           </select>
           {(sortType === "moststudents"
-            ? largestStudentBody
+            ? largestStudentBody()
             : sortType === "nostudents"
-            ? emptyCampus
+            ? emptyCampus()
             : campuses
           ).map((campus) => {
             return (

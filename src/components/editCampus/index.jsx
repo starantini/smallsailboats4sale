@@ -9,13 +9,12 @@ const EditCampus = () => {
   const [name, setName] = useState("");
   const [address, setAddress] = useState("");
   const [description, setDescription] = useState("");
-  // console.log(name, address, description);
+
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     dispatch(editCampusAsync({ campusId, name, address, description }));
-    // console.log(campusId);
     setName("");
     setAddress("");
     setDescription("");

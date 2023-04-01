@@ -59,24 +59,3 @@ export const campusesSlice = createSlice({
 export const selectCampuses = (state) => state.campuses;
 
 export default campusesSlice.reducer;
-
-// export const sortByStudents = createAsyncThunk("campus/sort", async () => {
-//   try {
-//     const { data } = await axios.get("/api/campuses/withStudents");
-//     return data;
-//   } catch (err) {
-//     console.error(err);
-//   }
-// });
-
-// export const filteredCampuses = createAsyncThunk(
-//   "campuses/filtered",
-//   async () => {
-//     try {
-//       const { data } = await axios.get(`api/campuses/withStudents`);
-//       return data;
-//     } catch (err) {
-//       console.error(err.message);
-//     }
-//   }
-// );
