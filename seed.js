@@ -5,8 +5,6 @@ const Student = require("./server/db/models/Student");
 
 const randomNumber = () => Math.floor(Math.random() * (100 - 1 + 1)) + 1;
 const randomGpaNumber = () => (Math.random() * 3 + 1).toFixed(1);
-console.log(randomGpaNumber());
-console.log(randomGpaNumber());
 
 const campuses = [
   {
