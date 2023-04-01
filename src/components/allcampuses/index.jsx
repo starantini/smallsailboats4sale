@@ -35,8 +35,8 @@ const AllCampuses = () => {
   return (
     <div className="princple">
       <div className="left">
-        <h1>Campuses</h1>
         <ul>
+          <h1>Campuses</h1>
           <select onChange={(e) => setSortType(e.target.value)}>
             <option value>sort</option>
             <option value={"moststudents"}>MostStudents</option>
