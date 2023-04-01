@@ -11,9 +11,6 @@ import CreateCampus from "../createCampus";
 const AllCampuses = () => {
   const dispatch = useDispatch();
   const campuses = useSelector(selectCampuses);
-
-  // console.log(campuses.map((e) => e.students));
-
   const [sortType, setSortType] = useState("");
 
   useEffect(() => {
