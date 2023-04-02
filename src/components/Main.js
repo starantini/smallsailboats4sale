@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, Route, Routes } from "react-router-dom";
+import { Link, Route, Routes, useLocation } from "react-router-dom";
 
 import AllCampuses from "./allcampuses/index";
 import AllStudents from "./allstudents/index";
@@ -11,7 +11,6 @@ import EditCampus from "./editCampus";
 import EditStudent from "./editStudent";
 import PageNotFound from "./notFoundPage";
 import HomePage from "./homepage";
-import { useLocation } from "react-router-dom";
 
 const Main = () => {
   const location = useLocation();

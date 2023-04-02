@@ -7,11 +7,17 @@ import {
   deleteCampusAsync,
 } from "./campusesSlice";
 import CreateCampus from "../createCampus";
+import Pagination from "../campusesPagination";
 
 const AllCampuses = () => {
   const dispatch = useDispatch();
   const campuses = useSelector(selectCampuses);
   const [sortType, setSortType] = useState("");
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [campusPerPage, setCampusPerPage] = useState(10);
+
+  console.log(campuses.length);
 
   useEffect(() => {
     dispatch(fetchCampusesAsync());
@@ -35,6 +41,10 @@ const AllCampuses = () => {
     return emptyCampus;
   };
 
+  const lastCampusIndex = currentPage * campusPerPage;
+  const firstCampusIndex = lastCampusIndex - campusPerPage;
+  const currentCampus = [...campuses].slice(firstCampusIndex, lastCampusIndex);
+
   return (
     <div className="princple">
       <div className="left">
@@ -49,7 +59,7 @@ const AllCampuses = () => {
             ? largestStudentBody()
             : sortType === "nostudents"
             ? emptyCampus()
-            : campuses
+            : currentCampus
           ).map((campus) => {
             return (
               <li key={campus.id}>
@@ -64,6 +74,12 @@ const AllCampuses = () => {
             );
           })}
         </ul>
+        <Pagination
+          totalCampuses={campuses.length}
+          campusPerPage={campusPerPage}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+        />
       </div>
       <div className="right">
         <CreateCampus />

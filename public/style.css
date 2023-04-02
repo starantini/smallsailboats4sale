@@ -89,11 +89,21 @@ h1 {
 /* button styling */
 button {
   margin: 1em;
-  width: 100px;
+  width: fit-content;
 }
 button:hover {
   background-color: #2ee6e6;
   color: white;
+}
+
+button.active {
+  background-color: #2ee6e6;
+}
+.pagination {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 /* image styling */
