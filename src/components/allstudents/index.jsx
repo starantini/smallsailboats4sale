@@ -7,11 +7,15 @@ import {
   fetchStudentsAsync,
   deleteStudentAsync,
 } from "./studentsSlice";
+import StudentPagination from "../studentPagination";
 
 const AllStudents = () => {
   const dispatch = useDispatch();
   const students = useSelector(selectStudents);
   const [sortType, setSortType] = useState("");
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [studentPerPage, setStudentPerPage] = useState(10);
 
   const studentsSortedId = [...students].sort((a, b) => a.id - b.id);
   const studentsSortedLastname = [...students].sort((a, b) =>
@@ -32,6 +36,13 @@ const AllStudents = () => {
     dispatch(deleteStudentAsync(studentId));
   };
 
+  const lastStudentIndex = currentPage * studentPerPage;
+  const firstStudentIndex = lastStudentIndex - studentPerPage;
+  const currentStudents = [...students].slice(
+    firstStudentIndex,
+    lastStudentIndex
+  );
+
   return (
     <div className="princple">
       <div className="left">
@@ -49,7 +60,7 @@ const AllStudents = () => {
             ? studentsSortedLastname
             : sortType === "unregistered"
             ? unregisteredStudents
-            : studentsSortedId
+            : currentStudents
           ).map((student) => {
             return (
               <li key={student.id}>
@@ -66,6 +77,12 @@ const AllStudents = () => {
             );
           })}
         </ul>
+        <StudentPagination
+          totalStudents={students.length}
+          studentPerPage={studentPerPage}
+          setCurrentPage={setCurrentPage}
+          currentPage={currentPage}
+        />
       </div>
       <div className="right">
         <CreateStudent />

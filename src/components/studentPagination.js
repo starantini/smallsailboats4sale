@@ -1,10 +1,10 @@
 import React from "react";
 
-const CampusPagination = (props) => {
-  const { campusPerPage, totalCampuses, setCurrentPage, currentPage } = props;
+const StudentPagination = (props) => {
+  const { studentPerPage, totalStudents, setCurrentPage, currentPage } = props;
   let pages = [];
 
-  for (let i = 1; i <= Math.ceil(totalCampuses / campusPerPage); i++) {
+  for (let i = 1; i <= Math.ceil(totalStudents / studentPerPage); i++) {
     pages.push(i);
   }
   return (
@@ -26,4 +26,4 @@ const CampusPagination = (props) => {
   );
 };
 
-export default CampusPagination;
+export default StudentPagination;

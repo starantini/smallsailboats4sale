@@ -360,7 +360,7 @@
 #### Seeding & Pagination
 
 <details>
-
+<!-- I was able to apply a frontend pagination on campuses but I know the one that is required is an api route version of pagination, it was a good first step towards the api version of pagination. -->
 - [x] Seed 100+ students and 100+ campuses
 - [ ] Implement _front-end_ pagination for the students view (e.g. `/students?page=1` renders the first ten students, and `/students?page=2` renders students 11-20)
 - [ ] Implement _front-end_ pagination for the campuses view (e.g. `/campuses?page=1` renders the first ten campuses, and `/campuses?page=2` renders campuses 11-20)

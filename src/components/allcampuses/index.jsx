@@ -7,7 +7,7 @@ import {
   deleteCampusAsync,
 } from "./campusesSlice";
 import CreateCampus from "../createCampus";
-import Pagination from "../campusesPagination";
+import CampusPagination from "../campusesPagination";
 
 const AllCampuses = () => {
   const dispatch = useDispatch();
@@ -16,8 +16,6 @@ const AllCampuses = () => {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [campusPerPage, setCampusPerPage] = useState(10);
-
-  console.log(campuses.length);
 
   useEffect(() => {
     dispatch(fetchCampusesAsync());
@@ -74,7 +72,7 @@ const AllCampuses = () => {
             );
           })}
         </ul>
-        <Pagination
+        <CampusPagination
           totalCampuses={campuses.length}
           campusPerPage={campusPerPage}
           setCurrentPage={setCurrentPage}
