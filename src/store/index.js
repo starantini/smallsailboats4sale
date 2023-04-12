@@ -1,15 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import campusesSlice from "../components/allcampuses/campusesSlice";
-import studentsSlice from "../components/allstudents/studentsSlice";
-import oneCampusSlice from "../components/singlecampus/oneCampusSlice";
-import oneStudentSlice from "../components/singlestudent/oneStudentSlice";
+import usersSlice from "../components/allusers/usersSlice";
+import boatsSlice from "../components/allboats/boatsSlice";
 
 const store = configureStore({
   reducer: {
-    campuses: campusesSlice,
-    students: studentsSlice,
-    campus: oneCampusSlice,
-    student: oneStudentSlice,
+    users: usersSlice,
+    boats: boatsSlice,
   },
 });
 

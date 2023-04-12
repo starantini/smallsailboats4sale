@@ -1,34 +1,26 @@
 const Sequelize = require("sequelize");
 const db = require("../database");
 
-const Student = db.define("students", {
-  firstName: {
+const Boat = db.define("boats", {
+  brand: {
     type: Sequelize.STRING,
     allowNull: false,
     validate: {
       notEmpty: true,
     },
   },
-  lastName: {
-    type: Sequelize.STRING,
+  length: {
+    type: Sequelize.INTEGER,
     allowNull: false,
     validate: {
       notEmpty: true,
     },
   },
-  email: {
-    type: Sequelize.STRING,
+  price: {
+    type: Sequelize.INTEGER,
     allowNull: false,
     validate: {
       notEmpty: true,
-    },
-  },
-  gpa: {
-    type: Sequelize.DECIMAL,
-    allowNull: false,
-    validate: {
-      min: 0.0,
-      max: 4.0,
     },
   },
   imageUrl: {
@@ -39,4 +31,4 @@ const Student = db.define("students", {
   },
 });
 
-module.exports = Student;
+module.exports = Boat;

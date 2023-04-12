@@ -1,23 +1,24 @@
 const router = require("express").Router();
-const { Campus } = require("../db");
-const { Student } = require("../db");
+const { User } = require("../db");
+const { Boat } = require("../db");
 
 router.get("/", async (req, res, next) => {
   try {
-    const students = await Student.findAll({
-      include: [Campus],
+    const boats = await Boat.findAll({
+      include: [User],
     });
-    res.json(students);
+    console.log(boats);
+    res.json(boats);
   } catch (error) {
     next(error);
   }
 });
 router.get("/:id", async (req, res, next) => {
   try {
-    const student = await Student.findByPk(req.params.id, {
-      include: [Campus],
+    const boat = await Boat.findByPk(req.params.id, {
+      include: [User],
     });
-    res.json(student);
+    res.json(boat);
   } catch (error) {
     next(error);
   }
@@ -25,7 +26,7 @@ router.get("/:id", async (req, res, next) => {
 
 router.post("/", async (req, res, next) => {
   try {
-    res.status(201).send(await Student.create(req.body));
+    res.status(201).send(await Boat.create(req.body));
   } catch (error) {
     next(error);
   }
@@ -33,9 +34,9 @@ router.post("/", async (req, res, next) => {
 
 router.delete("/:id", async (req, res, next) => {
   try {
-    const student = await Student.findByPk(req.params.id);
-    await student.destroy();
-    res.send(student);
+    const boat = await Boat.findByPk(req.params.id);
+    await boat.destroy();
+    res.send(boat);
   } catch (error) {
     next(error);
   }
@@ -43,8 +44,8 @@ router.delete("/:id", async (req, res, next) => {
 
 router.put("/:id", async (req, res, next) => {
   try {
-    const student = await Student.findByPk(req.params.id);
-    res.send(await student.update(req.body));
+    const boat = await Boat.findByPk(req.params.id);
+    res.send(await boat.update(req.body));
   } catch (error) {
     next(error);
   }

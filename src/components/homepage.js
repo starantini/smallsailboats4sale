@@ -1,17 +1,10 @@
 import React, { useState } from "react";
 
 const HomePage = () => {
-  const [loadedImg, setLoadedImg] = useState(false);
-
   return (
     <div className="home">
-      <h2>Start Your Higher Education Journey with JPFP</h2>
-      {loadedImg ? null : <h1> Loading Banner Image.....</h1>}
-      <img
-        id="homebanner"
-        src="https://images.pexels.com/photos/12064/pexels-photo-12064.jpeg"
-        onLoad={() => setLoadedImg(true)}
-      />
+      <h2>find the right sailboat for you</h2>
+
       <div className="hometext">
         <h2> Mission Statement:</h2>
         <p>

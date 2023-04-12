@@ -1,15 +1,8 @@
 import React from "react";
 import { Link, Route, Routes, useLocation } from "react-router-dom";
 
-import AllCampuses from "./allcampuses/index";
-import AllStudents from "./allstudents/index";
-import OneCampus from "./singlecampus/index";
-import OneStudent from "./singlestudent/index";
-import CreateCampus from "./createCampus";
-import CreateStudent from "./createStudent";
-import EditCampus from "./editCampus";
-import EditStudent from "./editStudent";
-import PageNotFound from "./notFoundPage";
+import AllUsers from "./allusers/index";
+import AllBoats from "./allboats/index";
 import HomePage from "./homepage";
 
 const Main = () => {
@@ -18,8 +11,8 @@ const Main = () => {
     <div>
       <nav>
         <Link to={"/"}>HOME</Link>
-        <Link to={"/campuses"}>CAMPUSES</Link>
-        <Link to={"/students"}>STUDENTS</Link>
+        <Link to={"/users"}>users</Link>
+        <Link to={"/boats"}>Boats</Link>
       </nav>
       <nav className="staticBar">
         <h5>
@@ -28,16 +21,9 @@ const Main = () => {
         </h5>
       </nav>
       <Routes>
-        <Route path="/campuses" element={<AllCampuses />}></Route>
-        <Route path="/students" element={<AllStudents />}></Route>
-        <Route path="/campuses/:campusId/*" element={<OneCampus />}></Route>
-        <Route path="/students/:studentId/*" element={<OneStudent />}></Route>
-        <Route path="createCampus" element={<CreateCampus />}></Route>
-        <Route path="createStudent" element={<CreateStudent />}></Route>
-        <Route path="editCampus" element={<EditCampus />}></Route>
-        <Route path="editStudent" element={<EditStudent />}></Route>
+        <Route path="/users" element={<AllUsers />}></Route>
+        <Route path="/boats" element={<AllBoats />}></Route>
         <Route path="/" element={<HomePage />}></Route>
-        <Route path="*" element={<PageNotFound />}></Route>
       </Routes>
     </div>
   );
