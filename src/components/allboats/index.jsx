@@ -4,9 +4,12 @@ import { selectBoats, fetchBoatsAsync, deleteBoatAsync } from "./boatsSlice";
 import AuthForm from "../auth/AuthForm";
 
 const AllBoats = () => {
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+  const UserId = useSelector((state) => state.auth.me.id);
   const dispatch = useDispatch();
   const boats = useSelector(selectBoats);
-  // console.log(boats);
+  const myBoats = boats.filter((e) => (e.UserId === UserId ? e : null));
+  console.log(myBoats);
 
   useEffect(() => {
     dispatch(fetchBoatsAsync());
@@ -21,7 +24,7 @@ const AllBoats = () => {
     <div className="princple">
       <div className="left">
         <ul>
-          <h1>Boats</h1>
+          <h1>Boats 4 SALE</h1>
           {boats.map((boat) => {
             return (
               <li key={boat.id}>
@@ -31,7 +34,6 @@ const AllBoats = () => {
                 <h4>length: {boat.length}</h4>
                 <p>price: ${boat.price}</p>
                 <p>Contact: {boat.User.email}</p>
-                <button onClick={() => handleDelete(boat.id)}>X</button>
               </li>
             );
           })}

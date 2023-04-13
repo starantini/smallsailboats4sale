@@ -140,3 +140,8 @@ img:hover {
   transition: none;
   transform: none;
 }
+
+.topuserbar {
+  display: flex;
+  flex-wrap: wrap;
+}

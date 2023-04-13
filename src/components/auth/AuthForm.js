@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { authenticate } from "../../store/index";
+import { useNavigate } from "react-router-dom";
 
 /**
   The AuthForm component can be used for Login or Sign Up.
@@ -9,7 +10,8 @@ import { authenticate } from "../../store/index";
 **/
 
 const AuthForm = ({ name, displayName }) => {
-  console.log(name, displayName);
+  const navigate = useNavigate();
+  // console.log(name, displayName);
   const { error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   // const [formName, setFormName] = useState("");
@@ -24,6 +26,7 @@ const AuthForm = ({ name, displayName }) => {
     setUserName("");
     setPassword("");
     setEmail("");
+    navigate("/");
   };
 
   return (
