@@ -9,18 +9,18 @@ export const fetchBoatsAsync = createAsyncThunk("boats/fetchAll", async () => {
   return data;
 });
 
-// export const addBoatAsync = createAsyncThunk(
-//   "boats/addCampus",
-//   async ({ firstName, lastName, email, gpa }) => {
-//     const { data } = await axios.post("/api/boats", {
-//       firstName,
-//       lastName,
-//       email,
-//       gpa,
-//     });
-//     return data;
-//   }
-// );
+export const addBoatAsync = createAsyncThunk(
+  "boats/addCampus",
+  async ({ brand, length, price, UserId }) => {
+    const { data } = await axios.post("/api/boats", {
+      brand,
+      length,
+      price,
+      UserId,
+    });
+    return data;
+  }
+);
 
 export const deleteBoatAsync = createAsyncThunk(
   "boats/deleteboat",
@@ -42,9 +42,9 @@ export const boatsSlice = createSlice({
     builder.addCase(fetchBoatsAsync.fulfilled, (state, action) => {
       return action.payload;
     });
-    // builder.addCase(addBoatAsync.fulfilled, (state, action) => {
-    //   state.push(action.payload);
-    // });
+    builder.addCase(addBoatAsync.fulfilled, (state, action) => {
+      state.push(action.payload);
+    });
     builder.addCase(deleteBoatAsync.fulfilled, (state, action) => {
       const newState = state.filter((boat) => boat.id !== action.payload.id);
       return newState;

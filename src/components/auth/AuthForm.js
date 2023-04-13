@@ -9,18 +9,21 @@ import { authenticate } from "../../store/index";
 **/
 
 const AuthForm = ({ name, displayName }) => {
+  console.log(name, displayName);
   const { error } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   // const [formName, setFormName] = useState("");
   const [username, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [email, setEmail] = useState("");
 
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const formName = evt.target.name;
-    dispatch(authenticate({ username, password, method: formName }));
+    dispatch(authenticate({ username, password, email, method: formName }));
     setUserName("");
     setPassword("");
+    setEmail("");
   };
 
   return (
@@ -48,6 +51,19 @@ const AuthForm = ({ name, displayName }) => {
             onChange={(e) => setPassword(e.target.value)}
           />
         </div>
+        {name === "signup" ? (
+          <div>
+            <label htmlFor="email">
+              <small>email</small>
+            </label>
+            <input
+              name="email"
+              value={email}
+              type="email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
+          </div>
+        ) : null}
         <div>
           <button type="submit">{displayName}</button>
         </div>

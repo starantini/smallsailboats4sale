@@ -24,7 +24,7 @@ export const me = createAsyncThunk("auth/me", async () => {
         },
       });
       //we return the res.data specifically to be used as payload in the reducer below
-      console.log("res.data:", res.data);
+      // console.log("res.data:", res.data);
       return res.data;
     } else {
       return {};
@@ -40,10 +40,14 @@ export const me = createAsyncThunk("auth/me", async () => {
 //authenticate function is defined
 export const authenticate = createAsyncThunk(
   "auth/authenticate",
-  async ({ username, password, method }, thunkAPI) => {
+  async ({ username, password, email, method }, thunkAPI) => {
     try {
       //an axios post request is intiated with username and password
-      const res = await axios.post(`/auth/${method}`, { username, password });
+      const res = await axios.post(`/auth/${method}`, {
+        username,
+        password,
+        email,
+      });
       //window local Storage is set to that user token from res.data.token, the key is set
       //by the above defined token string
       window.localStorage.setItem(TOKEN, res.data.token);

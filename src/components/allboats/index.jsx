@@ -6,7 +6,7 @@ import AuthForm from "../auth/AuthForm";
 const AllBoats = () => {
   const dispatch = useDispatch();
   const boats = useSelector(selectBoats);
-  console.log(boats);
+  // console.log(boats);
 
   useEffect(() => {
     dispatch(fetchBoatsAsync());

@@ -6,11 +6,13 @@ import AllUsers from "./allusers/index";
 import AllBoats from "./allboats/index";
 import HomePage from "./homepage";
 import AuthForm from "./auth/AuthForm";
+import CreateBoat from "./createBoat";
 
 const Main = () => {
   const location = useLocation();
   const isLoggedIn = useSelector((state) => !!state.auth.me.id);
-  console.log(isLoggedIn);
+  const userName = useSelector((state) => state.auth.me.username);
+  // console.log(isLoggedIn);
   return (
     <div>
       <nav>
@@ -19,12 +21,13 @@ const Main = () => {
         {isLoggedIn ? null : <Link to={"/signup"}>signup</Link>}
       </nav>
       <nav className="staticBar">
-        <h5>
-          {location.hostname}
-          {location.pathname}
-        </h5>
+        <h5>Welcome {userName}</h5>
       </nav>
-      {isLoggedIn ? null : <AuthForm name="login" displayName="Login" />}
+      {isLoggedIn ? (
+        <CreateBoat />
+      ) : (
+        <AuthForm name="login" displayName="Login" />
+      )}
       <Routes>
         <Route path="/users" element={<AllUsers />}></Route>
         <Route path="/boats" element={<AllBoats />}></Route>
