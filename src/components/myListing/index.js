@@ -24,7 +24,9 @@ const MyListings = () => {
               <h4>length: {boat.length}</h4>
               <p>price: ${boat.price}</p>
               <p>Contact: {boat.User.email}</p>
-              <button onClick={() => handleDelete(boat.id)}>X</button>
+              <button onClick={() => handleDelete(boat.id)}>
+                delete listing
+              </button>
             </li>
           ))}
         </ul>
