@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-import AuthForm from "./auth/AuthForm";
+// import AuthForm from "./auth/AuthForm";
 
 const HomePage = () => {
   return (
     <div className="home">
       <h2>find the right sailboat for you</h2>
-      <AuthForm />
       <div className="hometext">
         <h2> Mission Statement:</h2>
         <p>

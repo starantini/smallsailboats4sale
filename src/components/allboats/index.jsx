@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { selectBoats, fetchBoatsAsync, deleteBoatAsync } from "./boatsSlice";
+import AuthForm from "../auth/AuthForm";
 
 const AllBoats = () => {
   const dispatch = useDispatch();

@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, Route, Routes, useLocation } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 import AllUsers from "./allusers/index";
 import AllBoats from "./allboats/index";
@@ -8,11 +9,12 @@ import AuthForm from "./auth/AuthForm";
 
 const Main = () => {
   const location = useLocation();
+  const isLoggedIn = useSelector((state) => !!state.auth.me.id);
+  console.log(isLoggedIn);
   return (
     <div>
       <nav>
         <Link to={"/"}>HOME</Link>
-        <Link to={"/users"}>users</Link>
         <Link to={"/boats"}>Boats</Link>
       </nav>
       <nav className="staticBar">
@@ -21,6 +23,7 @@ const Main = () => {
           {location.pathname}
         </h5>
       </nav>
+      <AuthForm name="login" displayName="Login" />
       <Routes>
         <Route path="/users" element={<AllUsers />}></Route>
         <Route path="/boats" element={<AllBoats />}></Route>
