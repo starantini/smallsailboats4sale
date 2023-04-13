@@ -2,6 +2,7 @@ const { db } = require("./server/db");
 
 const User = require("./server/db/models/User");
 const Boat = require("./server/db/models/Boat");
+const { DATEONLY } = require("sequelize");
 
 const randomNumber = () => Math.floor(Math.random() * (10000 - 1 + 1)) + 1;
 
@@ -28,16 +29,19 @@ const boats = [
     brand: "laser",
     length: 14,
     price: randomNumber(),
+    UserId: Math.floor(Math.random() * (3 - 1) + 1),
   },
   {
     brand: "moth",
     length: 13,
     price: randomNumber(),
+    UserId: Math.floor(Math.random() * (3 - 1) + 1),
   },
   {
     brand: "custom",
     length: 8,
     price: randomNumber(),
+    UserId: Math.floor(Math.random() * (3 - 1) + 1),
   },
 ];
 
@@ -48,7 +52,9 @@ const seed = async () => {
     await Promise.all(
       users.map((user) => {
         return User.create(user);
-      }),
+      })
+    );
+    await Promise.all(
       boats.map((boat) => {
         return Boat.create(boat);
       })

@@ -4,6 +4,7 @@ import { Link, Route, Routes, useLocation } from "react-router-dom";
 import AllUsers from "./allusers/index";
 import AllBoats from "./allboats/index";
 import HomePage from "./homepage";
+import AuthForm from "./auth/AuthForm";
 
 const Main = () => {
   const location = useLocation();
@@ -24,6 +25,18 @@ const Main = () => {
         <Route path="/users" element={<AllUsers />}></Route>
         <Route path="/boats" element={<AllBoats />}></Route>
         <Route path="/" element={<HomePage />}></Route>
+        <Route
+          path="/*"
+          element={<AuthForm name="login" displayName="Login" />}
+        />
+        <Route
+          path="/login"
+          element={<AuthForm name="login" displayName="Login" />}
+        />
+        <Route
+          path="/signup"
+          element={<AuthForm name="signup" displayName="Sign Up" />}
+        />
       </Routes>
     </div>
   );
