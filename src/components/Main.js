@@ -15,7 +15,8 @@ const Main = () => {
     <div>
       <nav>
         <Link to={"/"}>HOME</Link>
-        <Link to={"/boats"}>Boats</Link>
+        <Link to={"/boats"}>BOATS4SALE</Link>
+        {isLoggedIn ? null : <Link to={"/signup"}>signup</Link>}
       </nav>
       <nav className="staticBar">
         <h5>
@@ -23,7 +24,7 @@ const Main = () => {
           {location.pathname}
         </h5>
       </nav>
-      <AuthForm name="login" displayName="Login" />
+      {isLoggedIn ? null : <AuthForm name="login" displayName="Login" />}
       <Routes>
         <Route path="/users" element={<AllUsers />}></Route>
         <Route path="/boats" element={<AllBoats />}></Route>
