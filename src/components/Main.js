@@ -70,6 +70,7 @@ const Main = () => {
         <Route path="/boats" element={<AllBoats />}></Route>
         <Route path="/" element={<AllBoats />}></Route>
         <Route path="/mylistings" element={<MyListings />}></Route>
+        <Route path="createBoat" element={<CreateBoat />}></Route>
         <Route
           path="/*"
           element={<AuthForm name="login" displayName="Login" />}

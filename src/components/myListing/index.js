@@ -1,6 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { selectBoats, deleteBoatAsync } from "../allboats/boatsSlice";
+import {
+  selectBoats,
+  fetchBoatsAsync,
+  deleteBoatAsync,
+} from "../allboats/boatsSlice";
 
 const MyListings = () => {
   const UserId = useSelector((state) => state.auth.me.id);
@@ -8,6 +12,11 @@ const MyListings = () => {
   const boats = useSelector(selectBoats);
   const myBoats = boats.filter((e) => (e.UserId === UserId ? e : null));
   console.log(myBoats);
+
+  useEffect(() => {
+    dispatch(fetchBoatsAsync());
+    console.log("fetch Boats Async");
+  }, [dispatch]);
 
   const handleDelete = async (boatId) => {
     dispatch(deleteBoatAsync(boatId));

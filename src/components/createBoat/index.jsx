@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addBoatAsync } from "../allboats/boatsSlice";
+import { addBoatAsync, fetchBoatsAsync } from "../allboats/boatsSlice";
 
 const CreateBoat = () => {
   const UserId = useSelector((state) => state.auth.me.id);
@@ -19,6 +19,12 @@ const CreateBoat = () => {
     setLength("");
     setPrice("");
   };
+
+  useEffect(() => {
+    dispatch(fetchBoatsAsync());
+    console.log("fetch Boats Async");
+  }, [dispatch]);
+
   const requiredField = () => {
     if (brand.length === 0) {
       return <p style={{ color: "red" }}>*brand field is required</p>;
