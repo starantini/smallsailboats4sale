@@ -51,7 +51,7 @@ User.prototype.generateToken = function () {
 //correct password function to check that they match, so that the user
 //can sign in
 User.authenticate = async function ({ username, password }) {
-  console.log(process.env.JWT);
+  // console.log(process.env.JWT);
   const user = await this.findOne({ where: { username } });
   //if user doesn't exist, or if the returned promise for that user,
   //doesn't exists returns error
@@ -60,7 +60,7 @@ User.authenticate = async function ({ username, password }) {
     error.status = 401;
     throw error;
   }
-  console.log(process.env.JWT);
+  // console.log(process.env.JWT);
   //if nither case is false, then we generate a token for that user
   return user.generateToken();
 };

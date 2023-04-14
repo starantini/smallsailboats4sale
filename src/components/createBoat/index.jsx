@@ -18,12 +18,8 @@ const CreateBoat = () => {
     setBrand("");
     setLength("");
     setPrice("");
-  };
-
-  useEffect(() => {
     dispatch(fetchBoatsAsync());
-    console.log("fetch Boats Async");
-  }, [dispatch]);
+  };
 
   const requiredField = () => {
     if (brand.length === 0) {

@@ -9,16 +9,12 @@ const AllBoats = () => {
   const dispatch = useDispatch();
   const boats = useSelector(selectBoats);
   const myBoats = boats.filter((e) => (e.UserId === UserId ? e : null));
-  console.log(myBoats);
+  // console.log(myBoats);
 
   useEffect(() => {
     dispatch(fetchBoatsAsync());
     console.log("fetch Boats Async");
   }, [dispatch]);
-
-  const handleDelete = async (boatId) => {
-    dispatch(deleteBoatAsync(boatId));
-  };
 
   return (
     <div className="princple">

@@ -7,7 +7,7 @@ router.get("/", async (req, res, next) => {
     const boats = await Boat.findAll({
       include: [User],
     });
-    console.log(boats);
+    // console.log(boats);
     res.json(boats);
   } catch (error) {
     next(error);

@@ -13,11 +13,6 @@ const MyListings = () => {
   const myBoats = boats.filter((e) => (e.UserId === UserId ? e : null));
   console.log(myBoats);
 
-  useEffect(() => {
-    dispatch(fetchBoatsAsync());
-    console.log("fetch Boats Async");
-  }, [dispatch]);
-
   const handleDelete = async (boatId) => {
     dispatch(deleteBoatAsync(boatId));
   };
